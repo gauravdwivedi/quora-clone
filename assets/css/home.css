@@ -1,0 +1,33 @@
+.home-container{
+  display: flex;  
+  flex-direction: row;
+  font-weight: 200;
+  text-align: center;
+  
+}
+
+ .home-container > * {
+  padding: 10px;
+  flex: 1 100%;
+} 
+
+ul{
+  list-style-type: none;
+}
+
+.posts-list-container{
+text-align: left;
+}
+
+body {
+  padding: 2em; 
+}
+
+.feeds{
+  margin-right: 20px;
+  text-align: center;
+  height: 40vh;
+  font-weight: 800;
+}
+
+

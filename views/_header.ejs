@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/css/_header.css" />
+
+<div class="bg-div">
+  <div class="quora-logo">
+    <img class="logo-img" src="/images/quora-logo.png" width="130" height="130" ALT="align box" ALIGN="CENTER" /></div>
+  <div class="nav-class">
+    <nav>
+      <ul>
+        <% if(locals.user){ %>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Notifications</a></li>
+        <li><a href="/user/profile/<%= locals.user._id%>">Account</a></li>
+        <li><a href="#">Answers</a></li>
+        <li><a href="/posts/add-feed">Add Feed</a></li>
+        <li><a href="/user/sign-out">Logout</a></li>
+        <li><input type="text" placeholder="Search" /></li>
+        <% }else{ %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/user/login">Login</a></li>
+        <li><input type="text" placeholder="Search" /></li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</div>

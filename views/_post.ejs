@@ -1,0 +1,19 @@
+<div id="post-<%= post._id %>">
+
+  <small class="text-align-end">
+
+    <% if (locals.user && post.user==locals.user.id){%> <a class="delete-post-button"
+      href="/posts/destroy/<%= post.id %>"><img
+        src="https://img.icons8.com/cute-clipart/15/000000/delete-forever.png" /></a>
+    <!-- <span><a href="<%= locals.user._id %>">Local User</a></span><a href="<%= post.user %>">Post User</a> -->
+    <%}%>
+  </small>
+
+  <p>
+    <%= post.content %>
+    <div id="date">
+      <small> <%= post.date %></small>
+    </div>
+    </p>
+    <div id="user-name"><small><%= post.name %></small></div>
+</div>
