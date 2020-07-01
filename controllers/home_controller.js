@@ -7,11 +7,12 @@ module.exports.home = async function (req, res) {
 
 
     let post = await Post.find({}).sort("-createdAt")
-      .populate('user').exec();
+      .populate('user', 'name').exec();
 
     let feed = await Feed.find({}).sort("-createdAt");
 
     let users = await User.find({});
+
 
     return res.render("home", {
       title: "Home",

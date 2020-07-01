@@ -2,3 +2,11 @@
 .text-align-end{
     text-align: end;
   }
+
+  .one-space-right{
+    margin-right: 10px;
+  }
+
+  textarea {
+    resize: none;
+  }
