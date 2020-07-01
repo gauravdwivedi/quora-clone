@@ -33,13 +33,11 @@ module.exports.create = async function (req, res) {
   }
 }
 
-
 module.exports.addFeed = function (req, res) {
 
   return res.render('add-feed', {
     title: 'Add Feeds'
   });
-
 }
 
 module.exports.createFeed = async function (req, res) {

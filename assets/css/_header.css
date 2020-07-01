@@ -12,12 +12,16 @@ nav {
   overflow: hidden;
   text-align: center;
   flex-grow: 4;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.04);
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: #dee0e1;
 }
-
 
 nav ul {
   margin: 0;
   padding: 0;
+ 
 }
 nav ul li {
   display: inline-block;

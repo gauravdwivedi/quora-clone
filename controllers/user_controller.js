@@ -15,7 +15,7 @@ module.exports.createUser = async function (req, res) {
                 User.create(req.body, function (err, user) {
                     if (err) { console.log('error in creating user'); return; }
 
-                    return res.redirect('/user/sign_in');
+                    return res.redirect('/user/login');
                 })
             } else {
                 console.log('User not created');
