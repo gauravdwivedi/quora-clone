@@ -11,6 +11,10 @@ const postSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
+    question: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Question',
+    },
     date: {
       type: String,
     },

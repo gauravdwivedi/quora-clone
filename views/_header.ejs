@@ -7,13 +7,34 @@
     <nav>
       <ul>
         <% if(locals.user){ %>
-        <li><a href="/">Home</a></li>
-        <li><a href="#">Notifications</a></li>
-        <li><a href="/user/profile/<%= locals.user._id%>">Account</a></li>
-        <li><a href="#">Answers</a></li>
-        <li><a href="/posts/add-feed">Add Feed</a></li>
-        <li><a href="/user/sign-out">Logout</a></li>
-        <li><input type="text" placeholder="Search" /></li>
+        <li>
+          <div><img class="icon" src="https://img.icons8.com/cute-clipart/64/000000/home.png" /></div><a
+            href="/">Home</a>
+        </li>
+        <li>
+          <div><img class="icon" src="https://img.icons8.com/dusk/64/000000/push-notifications.png" /></div><a
+            href="#">Notifications</a>
+        </li>
+        <li>
+          <div><img class="icon" src="https://img.icons8.com/officel/64/000000/guest-male.png" /></div><a
+            href="/user/profile/<%= locals.user._id%>">Account</a>
+        </li>
+        <li>
+          <div><img class="icon" src="https://img.icons8.com/emoji/48/000000/question-mark-emoji.png" /></div><a
+            href="/posts/ask">Ask Question</a>
+        </li>
+        <li>
+          <div><img class="icon" src="https://img.icons8.com/dusk/64/000000/activity-feed-2.png" /></div><a
+            href="/posts/add-feed">Add Feed</a>
+        </li>
+        <li>
+          <div><img class="icon" src="https://img.icons8.com/dusk/64/000000/logout-rounded-left.png" /></div><a
+            href="/user/sign-out">Logout</a>
+        </li>
+        <li>
+          <input type="text" placeholder="Search" />
+          <div class="icon"></div>
+        </li>
         <% }else{ %>
         <li><a href="/">Home</a></li>
         <li><a href="/user/login">Login</a></li>

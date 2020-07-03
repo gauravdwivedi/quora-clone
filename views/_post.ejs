@@ -1,5 +1,16 @@
-<div class="all-posts" id="post-<%= post._id %>">
+<div class="all-posts two-space-below" id="post-<%= post._id %>">
 
+
+  <div class="question"><span>Question:</span>
+
+  </div>
+  <p>
+  <div class="post-content">
+    <%= post.content %></div>
+  <div id="date">
+    <small class="one-space-right"> <%= post.date %></small><small><%= post.user.name%></small>
+  </div>
+  </p>
   <small class="text-align-end">
 
     <% if (locals.user && locals.user.id==post.user._id){%> <a class="delete-post-button"
@@ -7,13 +18,6 @@
         src="https://img.icons8.com/cute-clipart/15/000000/delete-forever.png" /></a>
     <!-- <span><a href="<%= locals.user._id %>">Local User</a></span><a href="<%= post.user %>">Post User</a> -->
     <%}%>
-  </small>
-
-  <p>
-    <%= post.content %>
-    <div id="date">
-      <small class="one-space-right"> <%= post.date %></small><small><%= post.user.name%></small>
-    </div>
-    </p>
+    </small>
 
 </div>

@@ -1,0 +1,14 @@
+<% if(locals.user){ %>
+<div>
+
+    <%- include('add-question') -%>
+</div>
+<% } %>
+
+<div class="questions-list">
+    <ul>
+        <% for(question of questions){%>
+        <li><%- include('_question') -%></li>
+        <% } %>
+    </ul>
+</div>

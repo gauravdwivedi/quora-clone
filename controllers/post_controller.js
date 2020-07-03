@@ -1,6 +1,7 @@
 const Post = require("../models/post");
 const Feed = require('../models/feed');
 const User = require('../models/user');
+const Question = require('../models/question');
 
 module.exports.create = async function (req, res) {
 
@@ -67,6 +68,42 @@ module.exports.destroy = async function (req, res) {
     }
   } catch (err) {
     console.log('Under catch block : ');
+    return res.redirect('back');
+  }
+}
+
+module.exports.getQuestion = async function (req, res) {
+  try {
+    let questions = await Question.find({}).sort("-createdAt");
+    let feed = await Feed.find({}).sort("-createdAt")
+      .populate('');
+    return res.render('question', {
+      title: "Ask Questions",
+      questions: questions,
+      feeds: feed
+    });
+  } catch (err) {
+
+    console.log('error', err);
+    return res.redirect('back');
+  }
+
+}
+module.exports.createQuestion = async function (req, res) {
+  try {
+    let date = new Date().toDateString();
+    let question = await Question.create({
+      content: req.body.addquestion,
+      category: req.body.cat,
+      user: req.user._id,
+      date
+    });
+
+    return res.redirect('back');
+
+
+  } catch (err) {
+    console.log('Error');
     return res.redirect('back');
   }
 }
