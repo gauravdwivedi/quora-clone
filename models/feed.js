@@ -5,6 +5,7 @@ const feedSchema = new mongoose.Schema(
     feedname: {
       type: String,
       required: true,
+      unique: true,
     },
 
     user: {

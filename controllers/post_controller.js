@@ -43,8 +43,13 @@ module.exports.addFeed = function (req, res) {
 
 module.exports.createFeed = async function (req, res) {
   try {
-    let feed = Feed.create({
-      feedname: req.body.feedname
+
+
+
+    let feed = req.body.feedname;
+
+    Feed.create({
+      feedname: feed
     });
     return res.redirect('back');
 
@@ -91,10 +96,11 @@ module.exports.getQuestion = async function (req, res) {
 }
 module.exports.createQuestion = async function (req, res) {
   try {
+    console.log(req.body);
     let date = new Date().toDateString();
     let question = await Question.create({
       content: req.body.addquestion,
-      category: req.body.cat,
+      category: req.body.category,
       user: req.user._id,
       date
     });

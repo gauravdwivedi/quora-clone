@@ -1,7 +1,7 @@
 <form method="POST" action="/posts/add-question">
     <input id="add-question" name="addquestion" placeholder="ask your question here..." required />
     <label for="cat">Choose a Category</label>
-    <select id="cat">
+    <select name="category" id="cat">
         <% for(item of feeds){%>
         <option value="<%=item.feedname%>"><%=item.feedname%></option>
         <%}%>
