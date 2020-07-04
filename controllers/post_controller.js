@@ -3,6 +3,7 @@ const Feed = require('../models/feed');
 const User = require('../models/user');
 const Question = require('../models/question');
 const Comment = require('../models/comment');
+const { remove } = require("../models/post");
 
 module.exports.create = async function (req, res) {
 
@@ -15,6 +16,7 @@ module.exports.create = async function (req, res) {
       content: req.body.content,
       user: req.user._id,
       date: date,
+      category: req.body.category,
     });
 
     // //if we want to populate just the name of the user (we will not want to send the password)
@@ -44,26 +46,27 @@ module.exports.addFeed = function (req, res) {
 
 module.exports.createFeed = async function (req, res) {
   try {
-
     let feed = req.body.feedname;
-
     Feed.create({
       feedname: feed
     });
     return res.redirect('back');
-
   } catch (err) {
     console.log('error : ');
     return res.redirect('back');
   }
 }
 
+
 module.exports.destroy = async function (req, res) {
   try {
-    //check if user is same who created the post
     let post = await Post.findById(req.params.id);
-    console.log(post);
+
+    //check if user is same who created the post
     if (post.user == req.user.id) {
+
+      await Comment.deleteMany({ post: req.params.id });
+      console.log('COmments deleted I think');
       post.remove();
       return res.redirect('/');
     } else {
@@ -124,7 +127,6 @@ module.exports.addComment = async function (req, res) {
         content: req.body.content,
         user: req.user._id,
         post: req.body.postid,
-
       });
 
       if (comments) {
@@ -142,6 +144,30 @@ module.exports.addComment = async function (req, res) {
 
   } catch (err) {
     console.log('Error: Inside Catch');
+    return res.redirect('back');
+  }
+}
+
+module.exports.deleteComment = async function (req, res) {
+
+  try {
+    let comment = await Comment.findById(req.params.id);
+
+
+    if (comment.user == req.user.id) {
+      let postid = comment.post;
+
+      comment.remove();
+
+      await Post.findByIdAndUpdate(postid, { $pull: { comments: req.params.id } });
+
+      return res.redirect('back');
+    }
+
+    return res.redirect('back');
+  } catch (err) {
+
+    console.log('Comment not deleted');
     return res.redirect('back');
   }
 }

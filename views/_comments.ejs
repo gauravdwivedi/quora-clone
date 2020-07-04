@@ -1,3 +1,31 @@
 <div>
-    <%= comment%>
+    <ul>
+        <% for(comment of post.comments){%>
+        <% if (locals.user && locals.user.id==comment.user.id){%>
+        <div class="post-comments-list">
+            <p>
+                <%= comment.content %>
+                <br>
+
+            </p>
+            <div class="user-delete-comment">
+
+                <small>
+                    <%= comment.user.name %></small>
+                <a class="delete-post-button" href="/comments/delete/<%= comment.id %>"><img
+                        src="https://img.icons8.com/cute-clipart/15/000000/delete-forever.png" /></a>
+            </div>
+
+        </div>
+
+        <%}else{%>
+        <p>
+            <%= comment.content %>
+            <br>
+            <small>
+                <%= comment.user.name %></small>
+        </p>
+        <%}%>
+      <%}%>
+    </ul>
 </div>

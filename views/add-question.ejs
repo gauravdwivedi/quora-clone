@@ -3,7 +3,7 @@
     <label for="cat">Choose a Category</label>
     <select name="category" id="cat">
         <% for(item of feeds){%>
-        <option value="<%=item.feedname%>"><%=item.feedname%></option>
+        <option value="<%=item._id%>"><%=item.feedname%></option>
         <%}%>
     </select>
     <button type="submit" value="Question">Add</button>

@@ -32,3 +32,34 @@ module.exports.home = async function (req, res) {
     return;
   }
 };
+
+module.exports.updatefeed = async function (req, res) {
+  try {
+    let post = await Post.find({
+      'category': req.params.id
+    }).sort("-createdAt").
+      populate({
+        path: 'comments',
+        populate: {
+          path: 'user'
+        }
+      })
+      .exec();
+
+    let feed = await Feed.find({}).sort("-createdAt");
+
+    let users = await User.find({});
+    console.log(req.params.id);
+
+    return res.render("home", {
+      title: "Home",
+      posts: post,
+      feeds: feed,
+      all_users: users
+    });
+
+  } catch (err) {
+    console.log("Error", err);
+    return;
+  }
+}

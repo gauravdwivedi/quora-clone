@@ -38,6 +38,17 @@
 .post-comments{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;    
+  justify-content: space-between;
+}
 
+.post-comments-list{
+  
+  background-color: whitesmoke;
+  padding: 5px;
+  border: 1px solid wheat;
+}
+
+.user-delete-comment{
+  display: flex;
+  justify-content: space-between;
 }

@@ -18,9 +18,14 @@ const postSchema = new mongoose.Schema(
     date: {
       type: String,
     },
-    comments:[{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:'Comment'
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Feed',
+      required: true,
+    },
+    comments: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment'
     }]
   },
   {

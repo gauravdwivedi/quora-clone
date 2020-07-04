@@ -26,16 +26,5 @@
     <%}%>
     </div>
   </small>
-  <div class="post-comments-list">
-    <ul>
-      <% for(comment of post.comments){%>
-      <p>
-        <%= comment.content %>
-        <br>
-        <%= comment.user.name %>
-      </p>
-      <%}%>
-    </ul>
-  </div>
-
+  <%- include('_comments') -%>
 </div>

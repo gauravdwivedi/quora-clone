@@ -7,7 +7,8 @@ const questionSchema = new mongoose.Schema({
         required: true
     },
     category: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Feed',
         required: true,
     },
     user: {

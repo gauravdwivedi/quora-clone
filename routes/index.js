@@ -8,8 +8,10 @@ console.log("router loaded");
 
 
 router.get("/", homeController.home);
+router.get("/updatefeed/:id", homeController.updatefeed);
 router.use("/user", require("./user"));
 router.use("/posts", require("./post"));
+router.use("/comments", require('./comment'));
 
 router.get("*", function (req, res) {
   res.send("What are you looking for bro ? Page does not exist!", 404);

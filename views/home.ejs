@@ -17,16 +17,22 @@
       <form action="/posts/create" id="new-post-form" method="POST">
         <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
         <br>
+        <label for="cat">Choose a Category</label>
+        <select name="category" id="cat">
+          <% for(item of feeds){%>
+          <option value="<%=item._id%>"><%=item.feedname%></option>
+          <%}%>
+        </select>
         <input type="submit" value="Post" />
       </form>
       <%}%>
-    <br>
-    <ul>
-      <% for(post of posts){ %>
-      <li> <%- include('_post') -%></li>
-          
-      <%} %>
-    </ul>
+          <br>
+          <ul>
+            <% for(post of posts){ %>
+            <li> <%- include('_post') -%></li>
+
+            <%} %>
+          </ul>
   </div>
   <div class="right-container">
   </div>
