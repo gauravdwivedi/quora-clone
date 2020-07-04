@@ -2,6 +2,7 @@ const Post = require("../models/post");
 const Feed = require('../models/feed');
 const User = require('../models/user');
 const Question = require('../models/question');
+const Comment = require('../models/comment');
 
 module.exports.create = async function (req, res) {
 
@@ -43,8 +44,6 @@ module.exports.addFeed = function (req, res) {
 
 module.exports.createFeed = async function (req, res) {
   try {
-
-
 
     let feed = req.body.feedname;
 
@@ -110,6 +109,28 @@ module.exports.createQuestion = async function (req, res) {
 
   } catch (err) {
     console.log('Error');
+    return res.redirect('back');
+  }
+}
+
+module.exports.addComment = async function (req, res) {
+  try {
+
+    let comments = Comment.create({
+      content:req.body.content,
+      user:req.user._id,
+      
+    })
+
+
+    return res.render('comment', {
+      comments
+    });
+
+
+
+  } catch (err) {
+    console.log('Error: Inside Catch');
     return res.redirect('back');
   }
 }

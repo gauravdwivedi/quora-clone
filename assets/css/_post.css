@@ -35,7 +35,9 @@
   position: relative;
 }
 
-.post-content{
-
+.post-comments{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;    
 
 }

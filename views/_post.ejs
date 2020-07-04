@@ -13,9 +13,16 @@
   </p>
   <small class="text-align-end">
 
-    <% if (locals.user && locals.user.id==post.user._id){%> <a class="delete-post-button"
-      href="/posts/destroy/<%= post.id %>"><img
+    <% if (locals.user && locals.user.id==post.user._id){%>
+      
+    <div class="post-comments">
+      <% if(locals.user){%>
+      <%- include('add-comment') -%>
+
+      <%}%> <a class="delete-post-button" href="/posts/destroy/<%= post.id %>"><img
         src="https://img.icons8.com/cute-clipart/15/000000/delete-forever.png" /></a>
+    </div>
+
     <!-- <span><a href="<%= locals.user._id %>">Local User</a></span><a href="<%= post.user %>">Post User</a> -->
     <%}%>
     </small>

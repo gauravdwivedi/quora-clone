@@ -11,4 +11,5 @@ router.get('/ask', passport.checkAuthentication, postController.getQuestion);
 router.post('/add-feed', postController.createFeed);
 router.post('/add-question', passport.checkAuthentication, postController.createQuestion);
 
+
 module.exports = router;
