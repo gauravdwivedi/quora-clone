@@ -116,16 +116,27 @@ module.exports.createQuestion = async function (req, res) {
 module.exports.addComment = async function (req, res) {
   try {
 
-    let comments = Comment.create({
-      content:req.body.content,
-      user:req.user._id,
-      
-    })
+    let post = await Post.findById(req.body.postid);
+
+    if (post) {
+
+      let comments = await Comment.create({
+        content: req.body.content,
+        user: req.user._id,
+        post: req.body.postid,
+
+      });
+
+      if (comments) {
+        post.comments.push(comments);
+        await post.save();
+      }
+    }
+
+    // console.log(req.body);
 
 
-    return res.render('comment', {
-      comments
-    });
+    return res.redirect('back');
 
 
 
