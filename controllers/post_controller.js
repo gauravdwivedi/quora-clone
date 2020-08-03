@@ -4,7 +4,7 @@ const User = require('../models/user');
 const Question = require('../models/question');
 const Comment = require('../models/comment');
 const { remove } = require("../models/post");
-
+const commentsMailers = require('../mailers/comments_mailer');
 module.exports.create = async function (req, res) {
 
   try {
@@ -129,9 +129,12 @@ module.exports.addComment = async function (req, res) {
         post: req.body.postid,
       });
 
+      comments = await comments.populate('user','name email').execPopulate();
+
       if (comments) {
         post.comments.push(comments);
         await post.save();
+        commentsMailers.newComment(comments);
       }
     }
 

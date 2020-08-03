@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const port = 8000;
 
 const app = express();
-
 const db = require("./config/mongoose");
 
 
