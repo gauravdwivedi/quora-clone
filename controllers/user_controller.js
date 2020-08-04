@@ -35,6 +35,7 @@ module.exports.profile = async function (req, res) {
 
         return res.render('user_profile', {
             title: "User profile",
+            path:'profile',
             user: user
         })
 
@@ -53,7 +54,8 @@ module.exports.login = function (req, res) {
     }
 
     return res.render('sign_in', {
-        title: 'Login'
+        title: 'Login',
+        path:'login',
     })
 }
 module.exports.signUp = function (req, res) {
@@ -63,7 +65,8 @@ module.exports.signUp = function (req, res) {
 
     return res.render('sign_up',
         {
-            title: 'Sign-up'
+            title: 'Sign-up',
+            path:'signup',
         })
 }
 

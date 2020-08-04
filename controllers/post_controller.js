@@ -5,6 +5,15 @@ const Question = require('../models/question');
 const Comment = require('../models/comment');
 const { remove } = require("../models/post");
 const commentsMailers = require('../mailers/comments_mailer');
+
+
+//kue
+const queue = require('../config/kue');
+//comments email worker
+const commentEmailWorker = require('../worker/comment_email_worker');
+
+
+
 module.exports.create = async function (req, res) {
 
   try {
@@ -40,7 +49,8 @@ module.exports.create = async function (req, res) {
 module.exports.addFeed = function (req, res) {
 
   return res.render('add-feed', {
-    title: 'Add Feeds'
+    title: 'Add Feeds',
+    path:'Add-feed',
   });
 }
 
@@ -86,6 +96,7 @@ module.exports.getQuestion = async function (req, res) {
       .populate('');
     return res.render('question', {
       title: "Ask Questions",
+      path:'All-Questions',
       questions: questions,
       feeds: feed
     });
@@ -134,17 +145,25 @@ module.exports.addComment = async function (req, res) {
       if (comments) {
         post.comments.push(comments);
         await post.save();
-        commentsMailers.newComment(comments);
+        //sending email to comment's user
+        // commentsMailers.newComment(comments);
+
+        //creating a job or queue
+        //as soon as this creted job id will stored in job
+        let job = queue.create('email',comment).save(function(err){
+
+          if(err){ console.log('EWrror ins ending to the queue',err); return;}
+
+          console.log('job enqueued',job.id);
+
+        })
+
       }
     }
 
     // console.log(req.body);
 
-
     return res.redirect('back');
-
-
-
   } catch (err) {
     console.log('Error: Inside Catch');
     return res.redirect('back');
