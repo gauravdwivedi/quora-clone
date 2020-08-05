@@ -1,4 +1,7 @@
 const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const nodeMailer =require('../mailers/forgot_password_mailer');
+const verifyToken = require('../config/middleware');
 
 module.exports.createUser = async function (req, res) {
     try {
@@ -43,8 +46,6 @@ module.exports.profile = async function (req, res) {
     catch (err) {
         return res.redirect('back');
     }
-
-
 }
 
 module.exports.login = function (req, res) {
@@ -82,4 +83,58 @@ module.exports.destroySession = function (req, res) {
     req.logout();
 
     return res.redirect('/');
+}
+
+module.exports.resetPassword =function(req,res){
+
+
+    return res.render('forgot_password',{
+        path:'forgot-password',
+        title:'forgot password'
+    });
+} 
+
+module.exports.email_reset_password_link= async function(req,res){
+try{
+
+    let user = await User.findOne({
+        email:req.body.email
+    });
+
+    if(user){
+            jwt.sign({ user },'ftf',{expiresIn:'5000s'}, (err,token)=>{
+                    nodeMailer.newForgotPassWordEmail(user.email,token);
+                    return res.status(200).json({
+                        message:"Email has been sent! Please check your email!"
+                    })
+            })
+    }else{
+        return res.status(500).json({
+            message:"Email Address does not exsits"
+        })
+    }
+
+}catch(err){
+    return res.status(500).json({
+        message:err.message
+    })
+}
+    
+        
+}
+
+module.exports.changePassword = async function(req,res){
+    
+    if(verifyToken(req.params.token)){
+    
+
+    return res.render('password_emailreset',{
+        path:'email-reset',
+        title:'email Reset'
+    })
+}else{
+    return res.status(500).json({
+        message:"Unauthorized token"
+    })
+}
 }

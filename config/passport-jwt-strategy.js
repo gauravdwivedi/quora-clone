@@ -9,7 +9,7 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 //User for authentication
 const User =require('../models/user');
 
-
+console.log('inside JWT Strategy')
 let opts ={
     jwtFromRequest :ExtractJWT.fromAuthHeaderAsBearerToken,
     secretOrKey: 'quora'
