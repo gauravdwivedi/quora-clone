@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const nodeMailer =require('../mailers/forgot_password_mailer');
-const verifyToken = require('../config/middleware');
+const verifyToken = require('../config/middleware').default;
 
 module.exports.createUser = async function (req, res) {
     try {

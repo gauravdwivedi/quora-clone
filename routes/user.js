@@ -14,7 +14,6 @@ router.post('/email_reset_password_link',userController.email_reset_password_lin
 //
 router.get('/change_password_via_email/:token',userController.changePassword);
 
-router.get
 // //use passport as a middleware to authenticate 
 router.post('/create-session', passport.authenticate(
     'local',

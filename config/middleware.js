@@ -6,15 +6,17 @@ const verifyToken = async function(req,res,next){
     
         console.log(req);
 
-    let tokenValue = await jwt.verify(req,'ftf');
-
+    let tokenValue =  jwt.verify(req,'ftf');
+        console.log(tokenValue);
     if(tokenValue){
 
         req.tokenValue =  tokenValue.user._id;
-        next;
+       return next;
+    }else{
+        return console.log('Not verified');
     }
     }catch(err){
-        
+            console.log('error',err);
     }
 }
 
