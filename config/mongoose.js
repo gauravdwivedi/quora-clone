@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connection_url = 'mongodb + srv://admin:Iagd@jims1@cluster0.enhdn.mongodb.net/sponsortruckdb?retryWrites=true&w=majority';
 
-mongoose.connect(connection_url, {
+mongoose.connect(process.env.MONGODB_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
