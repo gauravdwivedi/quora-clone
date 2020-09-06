@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connection_url = 'mongodb+srv://whatsapp:VAJuVIsGrf60pBPX@cluster0.enhdn.mongodb.net/whatsappdb?retryWrites=true&w=majority';
+const connection_url = 'mongodb + srv://admin:Iagd@jims1@cluster0.enhdn.mongodb.net/sponsortruckdb?retryWrites=true&w=majority';
 
 mongoose.connect(connection_url, {
     useCreateIndex: true,
@@ -14,7 +14,7 @@ db.on('error', console.error.bind(console, 'Error connecting to mongodb'));
 
 db.once('open', () => {
     console.log('Connected successfully to Mongodb');
-    
+
 });
 
 module.exports = db;
