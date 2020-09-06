@@ -64,5 +64,6 @@ nav > ul > li > a {
   margin: 0px;
 }
 
-
-
+.searchbar:focus{
+  outline-style: none;
+}

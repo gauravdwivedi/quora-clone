@@ -3,11 +3,11 @@ const Feed = require("../models/feed");
 const User = require("../models/user");
 const Comment = require('../models/comment');
 
-module.exports.main = function(req,res){
+module.exports.main = function (req, res) {
 
-  return res.render('main',{
-    title:"Welcome to SponserTruck",
-    path:"main"
+  return res.render('main', {
+    title: "Welcome to SponserTruck",
+    path: "main"
   });
 }
 
@@ -32,7 +32,7 @@ module.exports.home = async function (req, res) {
 
     return res.render("home", {
       title: "Home",
-      path:'home',
+      path: 'home',
       posts: post,
       feeds: feed,
       all_users: users
@@ -63,7 +63,7 @@ module.exports.updatefeed = async function (req, res) {
 
     return res.render("home", {
       title: "Home",
-      path:'feed',
+      path: 'feed',
       posts: post,
       feeds: feed,
       all_users: users

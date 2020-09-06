@@ -8,9 +8,9 @@ console.log("router loaded");
 
 
 
-router.get("/influencer", homeController.home);
+// router.get("/influencer", homeController.home);
 
-router.get("/",passport.checkAuthentication,homeController.main);
+router.get("/", passport.checkAuthentication, homeController.home);
 router.get("/updatefeed/:id", homeController.updatefeed);
 router.use("/user", require("./user"));
 router.use("/posts", require("./post"));
