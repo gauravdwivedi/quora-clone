@@ -3,15 +3,16 @@ const Feed = require("../models/feed");
 const User = require("../models/user");
 const Comment = require('../models/comment');
 
-module.exports.main = function (req, res) {
+// module.exports.main = function (req, res) {
 
-  return res.render('main', {
-    title: "Welcome to SponserTruck",
-    path: "main"
-  });
-}
+//   return res.render('main', {
+//     title: "Welcome to SponserTruck",
+//     path: "main"
+//   });
+// }
 
 
+//Landing Page after login
 module.exports.home = async function (req, res) {
   try {
 
@@ -43,6 +44,8 @@ module.exports.home = async function (req, res) {
   }
 };
 
+
+//Fetch related feed 
 module.exports.updatefeed = async function (req, res) {
   try {
     let post = await Post.find({

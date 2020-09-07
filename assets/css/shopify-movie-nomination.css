@@ -1,0 +1,151 @@
+
+/*Search Container*/
+.search-container{
+    position: relative;
+    max-width: 250px;
+    
+}
+
+.search-container__searchbar{
+    display: inline-flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px;
+    background: #eeeeee;
+}
+
+.search-container,
+.search-container__searchbar{
+    border-radius: 5px;
+}
+.search-container__searchbar:focus-within{
+    background: #ffffff;
+}
+.search-container:focus-within{
+    box-shadow: 0 0 3px rgb(0, 0,0, 0.3);
+}
+
+.search-container__searchbar__input{
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0 6px;
+    background: transparent;
+}
+
+.search-result:hover{
+    background: #eeeeee;
+}
+
+.search-result{
+    border-bottom:1px solid #eeeeee;
+}
+
+.search-container__search-result-container{
+    position: absolute;
+    margin: 20px;
+    max-height: 250px;
+    overflow: auto;
+    
+    /* visibility: hidden;
+    opacity: 0; */
+    transition :visibility 0.1s, opcaity 0.1s;
+
+}
+
+.search-container__search-result-container:not(:nth-last-child()){
+    background: #eeeeee;
+}
+
+
+.title{
+    font-family: sans-serif;
+    margin-bottom: 5px;
+    width: 100%;
+
+}
+
+.hero-img{
+    width: 50px;
+    height: 50px;
+}
+.ele-div{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+.ele-div__title{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 5px;
+    width: fit-content;
+}
+
+.fav-btn{
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    background: greenyellow;
+    width: 100%;
+}
+
+.fav-btn:hover{
+    background: tomato;
+}
+
+
+.favlist-btn{
+    width: 100px;
+    height: 50px;
+    position: absolute;
+}
+
+
+
+/*Fav List*/
+
+.fav-list{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    width: 500px;
+    height: 500px;
+    
+}
+
+.fav-list-container__item{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    
+}
+.fav-list-container__item-img{
+    width: 250px;
+    height: 250px;
+  
+}
+
+.fav-list__title{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+   
+}
+
+.fav-list__title button{
+    height: 50px;
+    width: 80px;
+    background: tomato;
+    border-radius: 30px;
+    border: none;
+    outline-style: none;
+}
+
+
+#clearlocalstorage{
+    float: right;
+}

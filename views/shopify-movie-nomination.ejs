@@ -1,0 +1,22 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel='stylesheet' type='text/css' media='screen' href='\css\shopify-movie-nomination.css'>
+<div id="body_container">
+    <div class="search-container">
+        <div class="search-container__searchbar">
+            <input id="search-input" type="text" class="search-container__searchbar__input"
+                oninput="searchApi(this.value)" />
+            <i class="material-icons">search</i>
+        </div>
+    </div>
+    <div id="clearlocalstorage">
+        <button onclick="clearLS()">Clear LocalStorage</button>
+    </div>
+    <div id='result-container' class="search-container__search-result-container">
+        <div class="search-text">
+            <h3>Results for</h3>
+        </div>
+    </div>
+    <div id="fav-list-container" class="fav-list">
+    </div>
+</div>
+<script src='/js/script.js'></script>

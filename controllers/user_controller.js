@@ -2,6 +2,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const nodeMailer = require('../mailers/forgot_password_mailer');
 const verifyToken = require('../config/middleware').default;
+const axios = require('axios');
 
 module.exports.createUser = async function (req, res) {
     try {
@@ -30,6 +31,29 @@ module.exports.createUser = async function (req, res) {
         console.log('error :', err.message);
     }
 }
+
+
+//Shopify Movie Nomination Page
+module.exports.shopifynomination = function (req, res) {
+    return res.render('shopify-movie-nomination', {
+        title: "Shopify Movie Nomination",
+        path: "shopifynomination"
+    });
+}
+
+module.exports.shopifynominationResults = async function (req, res) {
+    try {
+
+        const response = await axios.get('http://www.omdbapi.com/?apikey=3ca5df7&t=${val}')
+
+
+    } catch (err) {
+        console.log('error :', err.message);
+
+    }
+}
+
+
 
 module.exports.profile = async function (req, res) {
 
